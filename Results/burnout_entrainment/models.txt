@@ -1,0 +1,190 @@
+Burnout and entrainment - 2026-10-07 18:46:14 
+
+Participants (combined sample, belt follows pacer, burnout available): 224; usable combined trials 7009
+Burnout (BAT total) in this subsample: M = 69.5, SD = 14.7, range 31-110
+
+Per-participant gain: M = 0.876, SD = 0.179; split-half r = 0.221, Spearman-Brown = 0.361
+
+                      r         lo         hi         p   n    ci90_lo
+gain        0.009682863 -0.1215542 0.14058724 0.8854117 224 -0.1006200
+compliance -0.038334062 -0.1685698 0.09321717 0.5681816 224 -0.1479048
+sync       -0.086539220 -0.2151811 0.04505469 0.1969201 224 -0.1948763
+              ci90_hi      p_tost
+gain       0.11975060 0.008018821
+compliance 0.07216630 0.023747891
+sync       0.02388406 0.103423239
+
+Burnout - felt arousal:
+           r           lo           hi            p            n 
+ -0.16402645  -0.28889767  -0.03366751   0.01397683 224.00000000 
+Gain - felt arousal:
+           r           lo           hi            p            n 
+  0.06908521  -0.06256419   0.19837160   0.30328310 224.00000000 
+
+== Felt arousal ~ burnout + gain + compliance (participant level, standardised) ==
+
+Call:
+lm(formula = scale(arousal) ~ scale(BATtotal) + scale(gain) + 
+    scale(compliance), data = pp)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.59220 -0.60933  0.02993  0.64026  2.67435 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(>|t|)  
+(Intercept)       -7.303e-17  6.602e-02   0.000   1.0000  
+scale(BATtotal)   -1.613e-01  6.625e-02  -2.435   0.0157 *
+scale(gain)        3.304e-02  7.521e-02   0.439   0.6608  
+scale(compliance)  7.926e-02  7.526e-02   1.053   0.2935  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9881 on 220 degrees of freedom
+Multiple R-squared:  0.03676,	Adjusted R-squared:  0.02362 
+F-statistic: 2.798 on 3 and 220 DF,  p-value: 0.04098
+
+
+== Combined task: lr_obs ~ lr_exp * bat_z + (1 + lr_exp | id) ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: lr_obs ~ lr_exp * bat_z + (1 + lr_exp | id)
+   Data: comb
+Control: ctl
+
+REML criterion at convergence: -7282.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.4984 -0.5445  0.0061  0.4851  6.6022 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ id       (Intercept) 0.001391 0.0373        
+          lr_exp      0.012402 0.1114   -0.56
+ Residual             0.019528 0.1397        
+Number of obs: 7009, groups:  id, 224
+
+Fixed effects:
+               Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)   -0.002000   0.003029 196.386494  -0.660    0.510    
+lr_exp         0.869113   0.010963 189.184534  79.280   <2e-16 ***
+bat_z          0.002715   0.003043 197.614287   0.892    0.373    
+lr_exp:bat_z   0.001806   0.010745 177.681086   0.168    0.867    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) lr_exp bat_z 
+lr_exp      -0.307              
+bat_z        0.000  0.001       
+lr_exp:bt_z  0.001 -0.008 -0.333
+
+== Baseline BCAT: lr_obs ~ lr_exp * bat_z + (1 + lr_exp | id) ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: lr_obs ~ lr_exp * bat_z + (1 + lr_exp | id)
+   Data: dplyr::filter(tr, task == "bcat_baseline")
+Control: ctl
+
+REML criterion at convergence: -6005.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-6.6774 -0.5492 -0.0021  0.5289  5.0980 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ id       (Intercept) 0.001469 0.03833       
+          lr_exp      0.004213 0.06491  -0.35
+ Residual             0.012406 0.11138       
+Number of obs: 4118, groups:  id, 224
+
+Fixed effects:
+               Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)   7.356e-03  3.116e-03  2.095e+02   2.361   0.0192 *  
+lr_exp        9.218e-01  7.270e-03  1.864e+02 126.806   <2e-16 ***
+bat_z        -5.288e-04  3.137e-03  2.129e+02  -0.169   0.8663    
+lr_exp:bat_z -4.172e-03  7.189e-03  1.791e+02  -0.580   0.5624    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) lr_exp bat_z 
+lr_exp      -0.164              
+bat_z        0.002 -0.001       
+lr_exp:bt_z -0.001  0.020 -0.185
+
+== Felt arousal: arousal ~ spd_exp * bat_z + sal + (1 + spd_exp | id) ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: arousal ~ spd_exp * bat_z + sal_e + (1 + spd_exp | id)
+   Data: comb
+Control: ctl
+
+REML criterion at convergence: 15046.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.7761 -0.4791  0.0308  0.4649  5.5144 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ id       (Intercept) 0.9770   0.9885        
+          spd_exp     0.4801   0.6929   -0.24
+ Residual             0.4238   0.6510        
+Number of obs: 7009, groups:  id, 224
+
+Fixed effects:
+                Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)    3.523e+00  6.654e-02  2.219e+02  52.944  < 2e-16 ***
+spd_exp        4.972e-01  6.094e-02  1.895e+02   8.159 4.59e-14 ***
+bat_z         -1.673e-01  6.670e-02  2.220e+02  -2.508   0.0128 *  
+sal_e          7.067e-03  1.566e-02  6.619e+03   0.451   0.6519    
+spd_exp:bat_z  1.258e-01  6.004e-02  1.815e+02   2.096   0.0375 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) spd_xp bat_z  sal_e 
+spd_exp     -0.183                     
+bat_z        0.000  0.000              
+sal_e        0.004  0.000  0.000       
+spd_xp:bt_z  0.000 -0.006 -0.182  0.002
+
+== Sensitivity: arousal ~ dir * bat_z + sal + (1 + dir | id), change trials ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: arousal ~ dir_e * bat_z + sal_e + (1 + dir_e | id)
+   Data: comb_chg
+Control: ctl
+
+REML criterion at convergence: 10281.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.0636 -0.4589  0.0327  0.4774  5.2294 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ id       (Intercept) 0.9550   0.9772        
+          dir_e       0.1533   0.3915   -0.15
+ Residual             0.4328   0.6579        
+Number of obs: 4593, groups:  id, 224
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  3.542e+00  6.609e-02  2.219e+02  53.585  < 2e-16 ***
+dir_e        2.605e-01  3.309e-02  1.975e+02   7.871 2.27e-13 ***
+bat_z       -1.674e-01  6.627e-02  2.223e+02  -2.525   0.0123 *  
+sal_e        8.864e-03  1.959e-02  4.169e+03   0.452   0.6510    
+dir_e:bat_z  5.865e-02  3.345e-02  1.967e+02   1.754   0.0811 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) dir_e  bat_z  sal_e 
+dir_e       -0.108                     
+bat_z        0.000  0.001              
+sal_e        0.007  0.010  0.000       
+dir_e:bat_z  0.001  0.005 -0.101  0.001

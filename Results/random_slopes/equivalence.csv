@@ -1,0 +1,9 @@
+"test","estimate","ci90_lo","ci90_hi","sesoi","unit","p_tost","equivalent"
+"Salience (high - low) -> clip intensity",0.000197027740635041,-0.0281187775013544,0.0285128329826245,0.05,"scale points",0.00199679736429114,TRUE
+"Direction (accelerate - decelerate) -> clip intensity",0.00660220148049017,-0.0200376896808463,0.0332420926418266,0.05,"scale points",0.00380486950703127,TRUE
+"Salience x direction -> clip intensity",-0.0134212909382422,-0.0657413697320497,0.0388987878555652,0.05,"scale points",0.125072391055937,FALSE
+"Breathing change made (per within-person SD) -> clip intensity",0.0118620100702645,-0.0079232565002078,0.0316472766407369,0.05,"scale points",0.000848633285198067,TRUE
+"Salience (high - low) -> recognition accuracy",-0.00111185333781008,-0.0127685091386931,0.010544802463073,0.02,"proportion",0.00384833978821044,TRUE
+"Direction (accelerate - decelerate) -> recognition accuracy",-0.0110883816372561,-0.0227441766400076,0.000567413365495466,0.02,"proportion",0.10426450978198,FALSE
+"Direction (accelerate - decelerate) -> HR change",-0.25088065514595,-0.524897549799009,0.0231362395071081,1,"bpm",5.26145099012461e-06,TRUE
+"Salience (high - low) -> HR change",-0.165877578979859,-0.438562487766336,0.106807329806617,1,"bpm",4.60379641930484e-07,TRUE

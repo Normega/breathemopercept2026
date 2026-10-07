@@ -1,0 +1,55 @@
+Moderation framing: direction effect (accel - decel) moderated by salience
+dir coded +0.5 accel / -0.5 decel, so b = accel minus decel.
+
+sal x dir interactions
+                         outcome        b     se       lo     hi      p
+1            GERT intensity (M2)  0.00282 0.0316 -0.05903 0.0647 0.9289
+2      GERT accuracy, logit (M5) -0.03434 0.0688 -0.16918 0.1005 0.6176
+3       Felt arousal, trial (M3)  0.07025 0.0276  0.01620 0.1243 0.0109
+4 Felt arousal, block mean (S2a)  0.06898 0.0389 -0.00722 0.1452 0.0760
+
+Simple effects of direction at each salience level
+                         outcome salience        b     se      lo     hi
+1            GERT intensity (M2)     High  0.00766 0.0223 -0.0361 0.0515
+2            GERT intensity (M2)      Low  0.00485 0.0223 -0.0389 0.0486
+3      GERT accuracy, logit (M5)     High -0.08180 0.0487 -0.1773 0.0137
+4      GERT accuracy, logit (M5)      Low -0.04745 0.0486 -0.1428 0.0479
+5       Felt arousal, trial (M3)     High  0.21140 0.0195  0.1732 0.2496
+6       Felt arousal, trial (M3)      Low  0.14115 0.0195  0.1029 0.1794
+7 Felt arousal, block mean (S2a)     High  0.21021 0.0275  0.1563 0.2641
+8 Felt arousal, block mean (S2a)      Low  0.14123 0.0275  0.0874 0.1951
+         p
+1 7.32e-01
+2 8.28e-01
+3 9.33e-02
+4 3.29e-01
+5 3.12e-27
+6 4.75e-13
+7 2.72e-14
+8 2.89e-07
+
+Measured awareness moderator (intensity ~ dir * det_pc + det_pm + sal + (1 | id) + (1 | clip))
+        term       b     se    df        lo     hi      p
+1        dir 0.00488 0.0158 16128 -0.026148 0.0359 0.7579
+2     det_pc 0.05169 0.0260 16129  0.000749 0.1026 0.0467
+3 dir:det_pc 0.08999 0.0574 16393 -0.022482 0.2025 0.1168
+
+Moderated mediation: dir -> block arousal (a, moderated by sal) -> intensity (b = arousal_pc)
+b path (arousal_pc -> intensity): b = 0.0533, SE = 0.0158, p = 0.0007561
+                      quantity     est        lo     hi
+1     indirect | high salience 0.01121  0.004298 0.0190
+2      indirect | low salience 0.00753  0.002700 0.0134
+3 index of moderated mediation 0.00368 -0.000299 0.0092
+
+Index of moderated mediation, trial-level a path: 0.00375, 95% CI [0.00068, 0.00806]
+Total sal:dir on intensity (M2):
+     term       b     se    df     lo     hi     p
+1 sal:dir 0.00282 0.0316 15884 -0.059 0.0647 0.929
+Direct sal:dir on intensity | arousal (S2b):
+     term         b     se    df      lo    hi     p
+1 sal:dir -0.000988 0.0316 16128 -0.0629 0.061 0.975
+
+b-path moderation (intensity ~ sal * dir + arousal_pc * sal + arousal_pm + (1 | id) + (1 | clip))
+            term       b     se    df      lo       hi      p
+1     arousal_pc  0.0518 0.0158 16160  0.0207  0.08281 0.0011
+2 sal:arousal_pc -0.0646 0.0303 16195 -0.1240 -0.00518 0.0331

@@ -1,0 +1,526 @@
+Salience reanalysis model output
+Run: 2026-10-01 21:43:06 
+
+==============================================================================
+M0 thesis spec (emoIntensity ~ DirectionLabel * Aware + (1 | id), block level)
+==============================================================================
+Random-effects attempts:
+  as in 08_hypotheses.R
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: emoIntensity ~ DirectionLabel * Aware + (1 | id)
+   Data: thesisBlocks
+
+REML criterion at convergence: 6218.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4814 -0.5735  0.0117  0.6351  3.5634 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.3635   0.6029  
+ Residual             0.3032   0.5506  
+Number of obs: 3302, groups:  id, 287
+
+Fixed effects:
+                              Estimate Std. Error         df t value Pr(>|t|)
+(Intercept)                    4.98635    0.04495  612.10464 110.920   <2e-16
+DirectionLabelDec              0.04357    0.03815 3055.89909   1.142   0.2535
+AwareTRUE                      0.08157    0.03297 3087.23066   2.474   0.0134
+DirectionLabelDec:AwareTRUE   -0.06247    0.04560 3069.34501  -1.370   0.1708
+                               
+(Intercept)                 ***
+DirectionLabelDec              
+AwareTRUE                   *  
+DirectionLabelDec:AwareTRUE    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) DrctLD AwTRUE
+DirctnLblDc -0.424              
+AwareTRUE   -0.530  0.595       
+DrcLD:ATRUE  0.365 -0.864 -0.689
+
+
+==============================================================================
+M0 effect-coded (block level)
+==============================================================================
+Random-effects attempts:
+  emoIntensity ~ Aware * dir + (1 | id)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 6218.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.4814 -0.5735  0.0117  0.6351  3.5634 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.3635   0.6029  
+ Residual             0.3032   0.5506  
+Number of obs: 3302, groups:  id, 287
+
+Fixed effects:
+                Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)      5.00813    0.04072  420.55768 122.987   <2e-16 ***
+AwareTRUE        0.05034    0.02391 3111.64775   2.106   0.0353 *  
+dir             -0.04357    0.03815 3055.89909  -1.142   0.2535    
+AwareTRUE:dir    0.06247    0.04560 3069.34501   1.370   0.1708    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) AwTRUE dir   
+AwareTRUE   -0.424              
+dir         -0.001  0.003       
+AwarTRUE:dr  0.002 -0.004 -0.864
+
+
+==============================================================================
+M1 manipulation check (change trials only)
+==============================================================================
+Random-effects attempts:
+  Accuracy ~ sal * dir + (1 + sal | id)  [singular or non-convergent]
+  Accuracy ~ sal * dir + (1 + sal || id)  [singular or non-convergent]
+  Accuracy ~ sal * dir + (1 | id)  [OK]
+
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: Accuracy ~ sal * dir + (1 | id)
+   Data: data
+Control: 
+lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e+05))
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   8045.1    8079.1   -4017.5    8035.1      6629 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.2178 -0.9740  0.5014  0.6889  2.0800 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ id     (Intercept) 0.6162   0.785   
+Number of obs: 6634, groups:  id, 287
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  0.74671    0.05448  13.707   <2e-16 ***
+sal          0.57142    0.05558  10.281   <2e-16 ***
+dir          0.13690    0.05536   2.473   0.0134 *  
+sal:dir      0.01896    0.11072   0.171   0.8641    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal   dir  
+sal     0.048             
+dir     0.013  0.008      
+sal:dir 0.003  0.021 0.076
+
+
+==============================================================================
+M2 primary
+==============================================================================
+Random-effects attempts:
+  intensity ~ sal * dir + (1 + sal | id) + (1 | clip)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 48337.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.7999 -0.5645  0.0781  0.6545  4.4931 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ id       (Intercept) 0.36724  0.6060        
+          sal         0.01086  0.1042   0.28 
+ clip     (Intercept) 0.56995  0.7549        
+ Residual             1.02169  1.0108        
+Number of obs: 16474, groups:  id, 287; clip, 60
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  5.036e+00  1.041e-01  7.555e+01  48.368   <2e-16 ***
+sal         -1.384e-03  1.697e-02  2.853e+02  -0.082    0.935    
+dir          6.255e-03  1.580e-02  1.588e+04   0.396    0.692    
+sal:dir      2.816e-03  3.155e-02  1.588e+04   0.089    0.929    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir   
+sal      0.035              
+dir      0.000 -0.002       
+sal:dir  0.000  0.002  0.002
+
+
+==============================================================================
+M3 felt arousal (trial level)
+==============================================================================
+Random-effects attempts:
+  Arousal ~ sal * dir + (1 + sal | id)  [singular or non-convergent]
+  Arousal ~ sal * dir + (1 + sal || id)  [singular or non-convergent]
+  Arousal ~ sal * dir + (1 | id)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 22018.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.8323 -0.4853  0.0499  0.4795  4.8261 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 1.0312   1.015   
+ Residual             0.4719   0.687   
+Number of obs: 9946, groups:  id, 287
+
+Fixed effects:
+             Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept) 3.525e+00  6.034e-02 2.860e+02  58.412   <2e-16 ***
+sal         3.420e-03  1.378e-02 9.656e+03   0.248   0.8040    
+dir         1.763e-01  1.378e-02 9.656e+03  12.790   <2e-16 ***
+sal:dir     7.025e-02  2.757e-02 9.656e+03   2.548   0.0109 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir   
+sal      0.000              
+dir      0.000 -0.003       
+sal:dir  0.000  0.003  0.000
+
+
+==============================================================================
+M4a mediation a path (det_block = 2 change trials)
+==============================================================================
+Random-effects attempts:
+  det_block ~ sal * dir + (1 + sal | id)  [singular or non-convergent]
+  det_block ~ sal * dir + (1 + sal || id)  [singular or non-convergent]
+  det_block ~ sal * dir + (1 | id)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 2248.7
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.78079 -0.65037  0.09062  0.79816  2.24662 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02428  0.1558  
+ Residual             0.10210  0.3195  
+Number of obs: 3321, groups:  id, 287
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)    0.65841    0.01076  286.68533  61.218   <2e-16 ***
+sal            0.11305    0.01109 3034.13275  10.191   <2e-16 ***
+dir            0.02677    0.01109 3033.91590   2.413   0.0159 *  
+sal:dir       -0.00060    0.02219 3035.34417  -0.027   0.9784    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir   
+sal      0.001              
+dir      0.001 -0.001       
+sal:dir -0.001  0.002  0.001
+
+
+==============================================================================
+M4b mediation b path
+==============================================================================
+Random-effects attempts:
+  intensity ~ sal * dir + det_pc + det_pm + (1 | id) + (1 | clip)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 48346.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.7591 -0.5680  0.0816  0.6584  4.4238 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.3684   0.6070  
+ clip     (Intercept) 0.5699   0.7549  
+ Residual             1.0243   1.0121  
+Number of obs: 16474, groups:  id, 287; clip, 60
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  5.017e+00  1.689e-01  2.888e+02  29.701   <2e-16 ***
+sal         -6.908e-03  1.609e-02  1.613e+04  -0.429   0.6677    
+dir          4.902e-03  1.583e-02  1.613e+04   0.310   0.7568    
+det_pc       5.081e-02  2.598e-02  1.613e+04   1.955   0.0506 .  
+det_pm       2.886e-02  2.021e-01  2.852e+02   0.143   0.8866    
+sal:dir      2.951e-03  3.159e-02  1.613e+04   0.093   0.9256    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir    det_pc det_pm
+sal      0.000                            
+dir      0.001  0.006                     
+det_pc   0.000 -0.184 -0.045              
+det_pm  -0.787  0.000 -0.001 -0.001       
+sal:dir  0.000  0.002  0.002 -0.002  0.000
+
+
+==============================================================================
+M5 recognition accuracy
+==============================================================================
+Random-effects attempts:
+  gert_correct ~ sal * dir + (1 + sal | id) + (1 | clip)  [singular or non-convergent]
+  gert_correct ~ sal * dir + (1 + sal || id) + (1 | clip)  [singular or non-convergent]
+  gert_correct ~ sal * dir + (1 | id) + (1 | clip)  [OK]
+
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: gert_correct ~ sal * dir + (1 | id) + (1 | clip)
+   Data: data
+Control: 
+lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e+05))
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+  20076.1   20122.3  -10032.0   20064.1     16468 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.8162 -0.8670  0.4564  0.7364  4.1541 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ id     (Intercept) 0.2577   0.5076  
+ clip   (Intercept) 0.7061   0.8403  
+Number of obs: 16474, groups:  id, 287; clip, 60
+
+Fixed effects:
+             Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  0.379753   0.113931   3.333 0.000859 ***
+sal         -0.003637   0.034460  -0.106 0.915943    
+dir         -0.064626   0.034450  -1.876 0.060667 .  
+sal:dir     -0.034342   0.068796  -0.499 0.617647    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir   
+sal      0.000              
+dir      0.000 -0.001       
+sal:dir -0.001  0.002  0.002
+
+
+==============================================================================
+S1a sensitivity a path (acc3 = all 3 trials)
+==============================================================================
+Random-effects attempts:
+  acc3 ~ sal * dir + (1 + sal | id)  [singular or non-convergent]
+  acc3 ~ sal * dir + (1 + sal || id)  [singular or non-convergent]
+  acc3 ~ sal * dir + (1 | id)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 892.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.1956 -0.6304  0.0597  0.7932  2.1663 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.01535  0.1239  
+ Residual             0.06805  0.2609  
+Number of obs: 3321, groups:  id, 287
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  6.645e-01  8.614e-03  2.862e+02  77.146   <2e-16 ***
+sal          8.916e-02  9.057e-03  3.034e+03   9.845   <2e-16 ***
+dir         -2.814e-03  9.056e-03  3.034e+03  -0.311    0.756    
+sal:dir      1.070e-02  1.812e-02  3.035e+03   0.591    0.555    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir   
+sal      0.001              
+dir      0.001 -0.001       
+sal:dir -0.001  0.002  0.001
+
+
+==============================================================================
+S1b sensitivity b path (acc3)
+==============================================================================
+Random-effects attempts:
+  intensity ~ sal * dir + acc3_pc + acc3_pm + (1 | id) + (1 | clip)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 48343.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.7736 -0.5665  0.0829  0.6566  4.4333 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.3663   0.6052  
+ clip     (Intercept) 0.5701   0.7550  
+ Residual             1.0242   1.0120  
+Number of obs: 16474, groups:  id, 287; clip, 60
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  4.830e+00  1.968e-01  3.302e+02  24.545   <2e-16 ***
+sal         -7.198e-03  1.607e-02  1.613e+04  -0.448   0.6543    
+dir          6.443e-03  1.581e-02  1.613e+04   0.407   0.6837    
+acc3_pc      6.746e-02  3.186e-02  1.613e+04   2.117   0.0342 *  
+acc3_pm      3.113e-01  2.514e-01  2.853e+02   1.239   0.2165    
+sal:dir      2.274e-03  3.159e-02  1.613e+04   0.072   0.9426    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir    acc3_pc acc3_pm
+sal      0.000                              
+dir      0.001 -0.003                       
+acc3_pc  0.000 -0.178  0.005                
+acc3_pm -0.849  0.000 -0.001 -0.001         
+sal:dir  0.000  0.004  0.002 -0.012   0.000 
+
+
+==============================================================================
+S2a exploratory: salience -> block-mean arousal
+==============================================================================
+Random-effects attempts:
+  arousal ~ sal * dir + (1 + sal | id)  [singular or non-convergent]
+  arousal ~ sal * dir + (1 + sal || id)  [singular or non-convergent]
+  arousal ~ sal * dir + (1 | id)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 6630.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-6.4654 -0.4868  0.0197  0.4502  5.2154 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 1.017    1.0084  
+ Residual             0.313    0.5595  
+Number of obs: 3321, groups:  id, 287
+
+Fixed effects:
+             Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept) 3.525e+00  6.032e-02 2.859e+02  58.436   <2e-16 ***
+sal         4.029e-03  1.943e-02 3.031e+03   0.207    0.836    
+dir         1.757e-01  1.942e-02 3.031e+03   9.046   <2e-16 ***
+sal:dir     6.897e-02  3.886e-02 3.031e+03   1.775    0.076 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+        (Intr) sal    dir   
+sal      0.000              
+dir      0.000 -0.001       
+sal:dir  0.000  0.002  0.001
+
+
+==============================================================================
+S2b exploratory: block-mean arousal -> intensity
+==============================================================================
+Random-effects attempts:
+  intensity ~ sal * dir + arousal_pc + arousal_pm + (1 | id) + (1 | clip)  [OK]
+
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: as.formula(f)
+   Data: data
+Control: lme4::lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: 48340.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.7795 -0.5672  0.0804  0.6573  4.4236 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.3635   0.6029  
+ clip     (Intercept) 0.5693   0.7545  
+ Residual             1.0238   1.0118  
+Number of obs: 16474, groups:  id, 287; clip, 60
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  4.794e+00  1.634e-01  2.757e+02  29.348  < 2e-16 ***
+sal         -1.415e-03  1.581e-02  1.613e+04  -0.089 0.928725    
+dir         -3.389e-03  1.607e-02  1.613e+04  -0.211 0.832973    
+arousal_pc   5.334e-02  1.583e-02  1.616e+04   3.369 0.000756 ***
+arousal_pm   6.889e-02  3.574e-02  2.856e+02   1.927 0.054924 .  
+sal:dir     -9.878e-04  3.161e-02  1.613e+04  -0.031 0.975068    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+           (Intr) sal    dir    arsl_pc arsl_pm
+sal         0.000                              
+dir         0.000 -0.001                       
+arousal_pc  0.000 -0.005 -0.179                
+arousal_pm -0.771 -0.001  0.000  0.001         
+sal:dir     0.000  0.002  0.009 -0.038  -0.001 
+
+
+==============================================================================
+Monte Carlo indirect effects (20,000 draws, seed 2026)
+M4 (det_block): a*b = 0.0057, 95% CI [0.0000, 0.0118]
+S1 (acc3):      a*b = 0.0060, 95% CI [0.0005, 0.0119]
+S2 (arousal):   a*b = 0.0002, 95% CI [-0.0019, 0.0025]

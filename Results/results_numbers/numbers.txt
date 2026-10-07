@@ -1,0 +1,61 @@
+Results numbers - 2026-10-07 18:45:42 
+
+== H1 sample (questionnaire + GERT baseline) : N = 315 
+  Age: M = 19.09, SD = 1.51, range 17.00-25.00, n = 315 
+  Gender:
+
+               Female                  Male Other or not reported 
+                  236                    68                    11 
+  BAT total: M = 69.31, SD = 14.65, range 31.00-110.00, n = 315 
+  MAIA total: M = 74.99, SD = 11.92, range 42.00-111.00, n = 315 
+== combined-task sample : N = 286 
+  Age: M = 19.10, SD = 1.55, range 17.00-25.00, n = 286 
+  Gender:
+
+               Female                  Male Other or not reported 
+                  217                    59                    10 
+  BAT total: M = 69.74, SD = 14.65, range 31.00-110.00, n = 286 
+  MAIA total: M = 74.72, SD = 12.05, range 42.00-111.00, n = 286 
+
+BCAT thresholds (proportion change): accelerate M = 0.31, SD = 0.14, range 0.01-0.97, n = 305 
+  decelerate M = 0.39, SD = 0.25, range 0.01-1.00, n = 305 
+  paired accel vs decel: t(304) = 5.66, p = 3.53e-08, mean diff 0.079
+GERT baseline accuracy: M = 0.54, SD = 0.11, range 0.13-0.87, n = 315 
+  intensity: M = 4.78, SD = 0.67, range 1.43-6.85, n = 315 
+
+Combined task: blocks 3248 ; change trials 6533 ; catch trials 3268 
+Detection: high salience 72.9% , low salience 61.3% ; catch trials correct 68.0% 
+Aware blocks (>= 2/3 correct, thesis definition): 73.6% 
+
+== R1 felt arousal ~ direction (accel +0.5) x salience, change trials ==
+ b = 0.247, 95% CI [0.213, 0.281], p = 1.7e-45 
+  salience b = -0.001, 95% CI [-0.035, 0.033], p = 0.939 
+  interaction b = 0.062, 95% CI [-0.005, 0.130], p = 0.072 
+
+== R2A detection ~ salience x direction (logit) ==
+ b = 0.582, 95% CI [0.473, 0.692], p = 1.8e-25 (OR = 1.79) 
+  direction b = 0.137, 95% CI [0.028, 0.246], p = 0.014 
+  interaction b = 0.005, 95% CI [-0.212, 0.223], p = 0.961 
+
+== R2B arousal ~ direction x detection (within person) ==
+ b = 0.208, 95% CI [0.126, 0.290], p = 6.4e-07 
+  detection main b = 0.057, 95% CI [0.018, 0.095], p = 0.004 
+  direction effect when detected vs missed: detected  b = 0.324, 95% CI [0.282, 0.366], p = 1.0e-49 ; missed  b = 0.090, 95% CI [0.025, 0.156], p = 0.007 ; 
+
+== E2C block intensity ~ felt arousal (within, between) + condition ==
+ within  b = 0.077, 95% CI [0.043, 0.112], p = 1.2e-05 
+ between  b = 0.080, 95% CI [0.012, 0.149], p = 0.022 
+ accuracy within  b = 0.013, 95% CI [-0.001, 0.027], p = 0.069 
+
+== Clip intensity ~ salience x direction ==
+ salience  b = 0.000, 95% CI [-0.031, 0.032], p = 0.976 
+ direction  b = 0.006, 95% CI [-0.025, 0.038], p = 0.686 
+ interaction  b = -0.013, 95% CI [-0.076, 0.049], p = 0.677 
+
+== E2A accuracy, combined minus baseline: 0.044 [0.030, 0.058], t(285) = 6.12, p = 3.08e-09 (combined M = 0.588, baseline M = 0.544)
+== E2B intensity, combined minus baseline: 0.254 [0.199, 0.308], t(285) = 9.12, p = 1.42e-17 (combined M = 5.05, baseline M = 4.80)
+
+== Burnout and felt arousal ==
+ combined task:  r(284) = -0.197, 95% CI [-0.306, -0.083], p = 8.3e-04 
+ baseline BCAT:  r(303) = -0.168, 95% CI [-0.275, -0.057], p = 0.003 
+ burnout ~ combined intensity:  r(284) = 0.048, 95% CI [-0.069, 0.163], p = 0.422 

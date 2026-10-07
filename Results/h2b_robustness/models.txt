@@ -1,0 +1,201 @@
+H2B robustness - 2026-10-07 18:46:12 
+
+h2b            r = -0.174 [-0.281, -0.063], p = 0.002, n = 305
+replicate      r = -0.176 [-0.285, -0.064], p = 0.002, n = 296
+acc_dir        r = -0.123 [-0.232, -0.011], p = 0.032, n = 305
+dec_dir        r = -0.157 [-0.264, -0.045], p = 0.006, n = 305
+spearman       rho = -0.198, p = 5.1e-04, n = 305
+no_ceiling     r = -0.163 [-0.271, -0.050], p = 0.005, n = 299
+reliability    accelerate vs decelerate threshold r = 0.323; Spearman-Brown reliability of their mean = 0.488
+disattenuated  H2B corrected for threshold unreliability (GERT reliability not corrected): r = -0.249
+calibration    r = 0.029 [-0.087, 0.144], p = 0.627, n = 286
+fa_thresh      r = 0.249 [0.140, 0.353], p = 1.2e-05, n = 301
+fa_gert        r = -0.091 [-0.202, 0.022], p = 0.115, n = 301
+maia_thresh    r = 0.043 [-0.070, 0.154], p = 0.459, n = 305
+
+== m0 ==
+
+Call:
+lm(formula = z(gert_acc) ~ z(thresh), data = d)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.9104 -0.6857  0.0390  0.6735  2.7894 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)   
+(Intercept) -4.566e-16  5.648e-02   0.000  1.00000   
+z(thresh)   -1.742e-01  5.657e-02  -3.079  0.00227 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9863 on 303 degrees of freedom
+Multiple R-squared:  0.03034,	Adjusted R-squared:  0.02714 
+F-statistic:  9.48 on 1 and 303 DF,  p-value: 0.002267
+
+
+== m_bias ==
+
+Call:
+lm(formula = z(gert_acc) ~ z(thresh) + z(fa) + z(base_miss_none), 
+    data = d)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.9022 -0.6813  0.0481  0.6413  2.8414 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(>|t|)  
+(Intercept)        0.002019   0.057094   0.035   0.9718  
+z(thresh)         -0.145166   0.062348  -2.328   0.0206 *
+z(fa)             -0.066388   0.062595  -1.061   0.2897  
+z(base_miss_none) -0.045141   0.062294  -0.725   0.4692  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9905 on 297 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared:  0.03392,	Adjusted R-squared:  0.02416 
+F-statistic: 3.475 on 3 and 297 DF,  p-value: 0.01644
+
+
+== m_eng ==
+
+Call:
+lm(formula = z(gert_acc) ~ z(thresh) + z(fa) + z(base_miss_none) + 
+    z(base_conf), data = d)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7824 -0.7019  0.0522  0.6766  2.8225 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(>|t|)  
+(Intercept)        0.002477   0.057070   0.043   0.9654  
+z(thresh)         -0.141242   0.062420  -2.263   0.0244 *
+z(fa)             -0.078729   0.063529  -1.239   0.2162  
+z(base_miss_none) -0.057149   0.063182  -0.905   0.3665  
+z(base_conf)      -0.065633   0.058544  -1.121   0.2632  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9901 on 296 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared:  0.038,	Adjusted R-squared:  0.025 
+F-statistic: 2.923 on 4 and 296 DF,  p-value: 0.02143
+
+
+== m_cov ==
+
+Call:
+lm(formula = z(gert_acc) ~ z(thresh) + z(fa) + z(base_miss_none) + 
+    z(base_conf) + z(MAIAtotal) + z(Age) + female + z(PHQ4total) + 
+    z(BATtotal), data = d)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.6823 -0.6507 -0.0136  0.6641  2.7576 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(>|t|)  
+(Intercept)       -0.08522    0.11770  -0.724   0.4696  
+z(thresh)         -0.13828    0.06268  -2.206   0.0282 *
+z(fa)             -0.07482    0.06444  -1.161   0.2465  
+z(base_miss_none) -0.06954    0.06437  -1.080   0.2809  
+z(base_conf)      -0.05975    0.06138  -0.973   0.3311  
+z(MAIAtotal)      -0.02740    0.06333  -0.433   0.6656  
+z(Age)             0.01576    0.05767   0.273   0.7848  
+female             0.11612    0.13696   0.848   0.3972  
+z(PHQ4total)       0.11841    0.07754   1.527   0.1278  
+z(BATtotal)       -0.11863    0.07764  -1.528   0.1276  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.992 on 291 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared:  0.05055,	Adjusted R-squared:  0.02119 
+F-statistic: 1.721 on 9 and 291 DF,  p-value: 0.08365
+
+
+== m_belt0 ==
+
+Call:
+lm(formula = z(gert_acc) ~ z(thresh), data = db)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.8617 -0.6882  0.0487  0.7036  2.8240 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  1.414e-16  6.411e-02   0.000   1.0000  
+z(thresh)   -1.332e-01  6.424e-02  -2.073   0.0392 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9932 on 238 degrees of freedom
+Multiple R-squared:  0.01774,	Adjusted R-squared:  0.01362 
+F-statistic: 4.299 on 1 and 238 DF,  p-value: 0.03921
+
+
+== m_belt ==
+
+Call:
+lm(formula = z(gert_acc) ~ z(thresh) + z(sync) + z(entrainment_gain) + 
+    z(fa), data = db)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7965 -0.6736 -0.0026  0.7138  2.7159 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(>|t|)  
+(Intercept)          0.00232    0.06478   0.036   0.9715  
+z(thresh)           -0.09496    0.07036  -1.350   0.1785  
+z(sync)              0.13976    0.07310   1.912   0.0571 .
+z(entrainment_gain) -0.02203    0.07187  -0.307   0.7595  
+z(fa)               -0.00340    0.06852  -0.050   0.9605  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9951 on 231 degrees of freedom
+  (4 observations deleted due to missingness)
+Multiple R-squared:  0.03332,	Adjusted R-squared:  0.01658 
+F-statistic:  1.99 on 4 and 231 DF,  p-value: 0.09681
+
+
+== robust (Huber) ==
+
+Call: rlm(formula = z(gert_acc) ~ z(thresh), data = d)
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-3.92466 -0.69643  0.02625  0.67291  2.77350 
+
+Coefficients:
+            Value   Std. Error t value
+(Intercept)  0.0061  0.0559     0.1098
+z(thresh)   -0.1845  0.0560    -3.2945
+
+Residual standard error: 1.032 on 303 degrees of freedom
+
+Influential points (Cook's D > 4/n): 10
+
+Call:
+lm(formula = z(gert_acc) ~ z(thresh), data = d[as.integer(names(cooks))[cooks <= 
+    4/length(cooks)], ])
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.83937 -0.72274  0.04307  0.66592  2.40679 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -9.421e-17  5.699e-02   0.000 1.000000    
+z(thresh)   -2.128e-01  5.708e-02  -3.727 0.000232 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9788 on 293 degrees of freedom
+Multiple R-squared:  0.04527,	Adjusted R-squared:  0.04201 
+F-statistic: 13.89 on 1 and 293 DF,  p-value: 0.0002323
+

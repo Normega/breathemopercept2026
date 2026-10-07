@@ -1,0 +1,3 @@
+"estimate","b","se","df","unit"
+"hr_change_accel_minus_decel",-0.246943968777596,0.162459855930376,4540.76293509311,"bpm, 8-13 s minus 0-8 s after onset"
+"hr_change_high_minus_low_salience",-0.163458361819389,0.162231058325064,4529.81400317841,"bpm, 8-13 s minus 0-8 s after onset"

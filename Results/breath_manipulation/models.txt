@@ -1,0 +1,281 @@
+Breath manipulation check - 2026-10-07 18:45:45 
+
+Participants with physio: 283; belt follows pacer (sync >= 0.4): 224
+Trials from included participants: 12145; unusable (matched < 2 or |log ratio| > log 2): 1018
+
+== M1 entrainment: lr_obs ~ lr_exp + (1 + lr_exp | id), both tasks ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: lr_obs ~ lr_exp + (1 + lr_exp | id)
+   Data: du
+Control: lmerControl(optimizer = "bobyqa")
+
+REML criterion at convergence: -13126.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-6.0466 -0.5412  0.0067  0.5063  7.2787 
+
+Random effects:
+ Groups   Name        Variance Std.Dev. Corr 
+ id       (Intercept) 0.001263 0.03553       
+          lr_exp      0.007096 0.08424  -0.53
+ Residual             0.017180 0.13107       
+Number of obs: 11127, groups:  id, 224
+
+Fixed effects:
+             Estimate Std. Error        df t value Pr(>|t|)    
+(Intercept) 1.744e-03  2.695e-03 2.082e+02   0.647    0.518    
+lr_exp      8.978e-01  7.592e-03 1.963e+02 118.252   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+       (Intr)
+lr_exp -0.338
+
+== M2 condition: spd_obs ~ dir * sal + (1 | id), combined change trials ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: spd_obs ~ dir_e * sal_e + (1 | id)
+   Data: dplyr::filter(comb, change)
+
+REML criterion at convergence: -3195.3
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.6091 -0.5671 -0.0050  0.5967  4.6628 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.005336 0.07304 
+ Residual             0.026824 0.16378 
+Number of obs: 4593, groups:  id, 224
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  1.561e-02  5.474e-03  2.107e+02   2.852  0.00477 ** 
+dir_e        4.339e-01  4.876e-03  4.399e+03  88.985  < 2e-16 ***
+sal_e       -1.858e-03  4.862e-03  4.380e+03  -0.382  0.70239    
+dir_e:sal_e  1.987e-01  9.711e-03  4.372e+03  20.457  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) dir_e sal_e
+dir_e       0.024             
+sal_e       0.018  0.015      
+dir_e:sal_e 0.007  0.035 0.045
+
+Cell means (cycle-duration change, cycle-3 onset to cycle-4 peak vs cycles 1-2; negative = faster):
+        cond    n prescribed_pct observed_pct followed_dir
+1 accel high 1053      -27.93961  -24.9765364  0.943969611
+2  accel low 1149      -18.53967  -17.1454214  0.906875544
+3 decel high 1171       33.09002   28.1551889  0.910333049
+4  decel low 1220       18.84324   16.1815294  0.838524590
+5  no change 2416        0.00000   -0.4620863  0.004139073
+
+== M2b: lr_obs ~ lr_exp * sal + (1 | id), combined ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: lr_obs ~ lr_exp * sal_e + (1 | id)
+   Data: comb
+
+REML criterion at convergence: -7202.5
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-5.4155 -0.5481 -0.0068  0.4940  6.8623 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.001351 0.03676 
+ Residual             0.020129 0.14188 
+Number of obs: 7009, groups:  id, 224
+
+Fixed effects:
+               Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  -2.324e-03  2.998e-03  2.030e+02  -0.775    0.439    
+lr_exp        8.690e-01  8.258e-03  6.982e+03 105.238   <2e-16 ***
+sal_e         1.549e-03  3.398e-03  6.792e+03   0.456    0.648    
+lr_exp:sal_e -1.418e-02  1.625e-02  6.845e+03  -0.872    0.383    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) lr_exp sal_e 
+lr_exp       0.012              
+sal_e        0.012 -0.020       
+lr_exp:sal_ -0.011 -0.402  0.026
+
+== M3 detection (combined): accuracy ~ aligned_pc + aligned_pm + dir * sal + (1 | id) ==
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: accuracy ~ aligned_pc + aligned_pm + dir_e * sal_e + (1 | id)
+   Data: dplyr::filter(comb, change)
+Control: glmerControl(optimizer = "bobyqa")
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   5506.9    5551.9   -2746.4    5492.9      4586 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.2867 -1.0192  0.4912  0.6858  2.7514 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ id     (Intercept) 0.4172   0.6459  
+Number of obs: 4593, groups:  id, 224
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  0.28199    0.15000   1.880  0.06011 .  
+aligned_pc   1.81433    0.21711   8.357  < 2e-16 ***
+aligned_pm   2.43020    0.64631   3.760  0.00017 ***
+dir_e        0.06674    0.06840   0.976  0.32921    
+sal_e        0.50041    0.07053   7.095 1.29e-12 ***
+dir_e:sal_e  0.23330    0.13509   1.727  0.08417 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) algnd_pc algnd_pm dir_e  sal_e 
+aligned_pc   0.010                                
+aligned_pm  -0.928  0.007                         
+dir_e       -0.009 -0.133    0.028                
+sal_e       -0.005 -0.268    0.038    0.081       
+dir_e:sal_e  0.007  0.000    0.004    0.135  0.075
+
+== M3b detection (baseline): accuracy ~ aligned_pc + aligned_pm + |lr_exp| + dir + (1 | id) ==
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: accuracy ~ aligned_pc + aligned_pm + abs(lr_exp) + dir_e + (1 |  
+    id)
+   Data: dplyr::filter(base, change)
+Control: glmerControl(optimizer = "bobyqa")
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   3394.0    3430.6   -1691.0    3382.0      3257 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-7.7845 -0.7585  0.4031  0.6152  2.3871 
+
+Random effects:
+ Groups Name        Variance Std.Dev.
+ id     (Intercept) 0        0       
+Number of obs: 3263, groups:  id, 224
+
+Fixed effects:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  1.44663    0.15137   9.557  < 2e-16 ***
+aligned_pc   2.58647    0.36183   7.148 8.78e-13 ***
+aligned_pm  -6.95163    0.66716 -10.420  < 2e-16 ***
+abs(lr_exp)  5.41392    0.47618  11.369  < 2e-16 ***
+dir_e       -0.23167    0.08541  -2.712  0.00668 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) algnd_pc algnd_pm abs(_)
+aligned_pc   0.157                         
+aligned_pm  -0.665  0.336                  
+abs(lr_exp) -0.027 -0.554   -0.698         
+dir_e        0.024  0.032    0.088   -0.131
+optimizer (bobyqa) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+
+
+== M4 arousal (combined, all trials): arousal ~ spd_exp + sal + spd_obs_pc + spd_obs_pm + (1 | id) ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: arousal ~ spd_exp + sal_e + spd_obs_pc + spd_obs_pm + (1 | id)
+   Data: comb
+
+REML criterion at convergence: 15194.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.0440 -0.4874  0.0435  0.4863  5.1474 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.9941   0.9970  
+ Residual             0.4461   0.6679  
+Number of obs: 7009, groups:  id, 224
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  3.530e+00  6.719e-02  2.220e+02  52.538  < 2e-16 ***
+spd_exp      4.626e-01  6.121e-02  6.800e+03   7.557 4.66e-14 ***
+sal_e        9.114e-03  1.601e-02  6.783e+03   0.569    0.569    
+spd_obs_pc   4.090e-02  5.718e-02  6.794e+03   0.715    0.474    
+spd_obs_pm  -1.105e+00  9.453e-01  2.238e+02  -1.169    0.243    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+           (Intr) spd_xp sal_e  spd_bs_pc
+spd_exp     0.000                        
+sal_e       0.003  0.000                 
+spd_obs_pc  0.000 -0.809  0.008          
+spd_obs_pm -0.047 -0.042 -0.003  0.034   
+
+== M5 depth: log(amp_ratio) ~ dir * sal + (1 | id), combined change trials ==
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: log(amp_ratio) ~ dir_e * sal_e + (1 | id)
+   Data: dplyr::filter(comb, change, is.finite(log(amp_ratio)))
+
+REML criterion at convergence: 1328.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-9.0028 -0.4259  0.0434  0.4859  5.6546 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.009045 0.0951  
+ Residual             0.073152 0.2705  
+Number of obs: 4593, groups:  id, 224
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept) -8.228e-02  7.551e-03  2.183e+02 -10.896  < 2e-16 ***
+dir_e       -1.684e-01  8.044e-03  4.419e+03 -20.930  < 2e-16 ***
+sal_e       -1.010e-02  8.024e-03  4.396e+03  -1.259    0.208    
+dir_e:sal_e -6.792e-02  1.603e-02  4.386e+03  -4.237 2.31e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) dir_e sal_e
+dir_e       0.028             
+sal_e       0.021  0.015      
+dir_e:sal_e 0.008  0.035 0.044
+
+== Sensitivity, cycle 3 vs cycles 1-2: M1, M3, M3b, M4 ==
+               Estimate  Std. Error       df    t value      Pr(>|t|)
+(Intercept) 0.001663328 0.003200893 214.6331  0.5196452  6.038464e-01
+lr_exp      0.707656839 0.015819770 237.8998 44.7324341 8.379893e-118
+              Estimate Std. Error  z value     Pr(>|z|)
+(Intercept) 0.16478425 0.12949184 1.272545 2.031794e-01
+aligned_pc  1.18215795 0.17088158 6.917995 4.580803e-12
+aligned_pm  3.77087949 0.70495763 5.349087 8.839919e-08
+dir_e       0.07485225 0.06646389 1.126209 2.600769e-01
+sal_e       0.56231093 0.06702817 8.389173 4.895736e-17
+dir_e:sal_e 0.15053320 0.13189373 1.141322 2.537360e-01
+              Estimate Std. Error   z value     Pr(>|z|)
+(Intercept)  0.3525320 0.17107737  2.060658 3.933565e-02
+aligned_pc   1.9682104 0.22584669  8.714807 2.912537e-18
+aligned_pm  -2.4695205 0.65897211 -3.747534 1.785815e-04
+abs(lr_exp)  3.9220346 0.39752824  9.866053 5.841837e-23
+dir_e       -0.2038334 0.08481991 -2.403132 1.625534e-02
+                 Estimate Std. Error        df     t value      Pr(>|t|)
+(Intercept)  3.5460908599 0.06902070  222.0267 51.37721081 3.143748e-125
+spd_exp      0.3637798031 0.04167886 6997.9765  8.72816096  3.197229e-18
+sal_e       -0.0007404818 0.01593387 6983.9512 -0.04647218  9.629352e-01
+spd_obs_pc   0.0972722121 0.04260756 6988.3090  2.28298004  2.246144e-02
+spd_obs_pm  -1.7813680462 1.14981645  222.4596 -1.54926296  1.227400e-01
